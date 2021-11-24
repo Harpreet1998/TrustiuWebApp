@@ -1,0 +1,19 @@
+﻿@model List<TrustiuWebApp.Models.Category>
+<li class="nav-item dropdown">
+    <a class="nav-link font-weight-bold text-dark dropdown-toggle" href="#" data-toggle="dropdown">All Category</a>
+    <ul class="dropdown-menu">
+        @foreach (var type in Model)
+        {
+            <li>
+                <a class="dropdown-item font-weight-bold text-dark" href="#">@type.CategoryName &raquo </a>
+                <ul class="submenu dropdown-menu">
+                    @foreach (var subcategory in type.SubCategories)
+                    {
+                        <li><a class="dropdown-item  font-weight-bold text-dark" asp-action="ProductBySubCategory" asp-route-id="@subcategory.SubCategoryID">@subcategory.SubCategoryName</a></li>
+                    }
+                </ul>
+            </li>
+        }
+
+    </ul>
+</li>
